@@ -14,15 +14,6 @@ class Instructor:
 	def __str__():
 		return "Welcome " + self.name 
 
-	def enterMark(self):
-		pass
-
-	def updateMark(self, stuID, assigName, newMark):
-		pass
-
-	def viewMarks(self):
-		pass
-
 
 class Student():
 	def __init__(self, name, stuID, username, password):
@@ -42,14 +33,19 @@ class Student():
 
 if __name__ =="__main__":
 	print("Course Marks\n")
-	username = input("Enter username ")
-	password = input("Enter password ")
+
+	authenticated = False
+	while (!authenticated):
+		ID = input("Enter ID: ")
+		password = input("Enter password: ")
+		# Check the type of user based on the ID
+		authenticated = db.authenticate(ID, password, "blah")
 
 
 	# Creating new accounts
-	if(username == "admin"):
+	if(ID == "admin"):
 		print("Create New Account\n")
-		type = input("Student or Instructor ")
+		type = input("Student or Instructor: ")
 		if (type == "Student"):
 			name = input("Enter name: ")
 			ID = input("Enter ID: ")
@@ -60,16 +56,17 @@ if __name__ =="__main__":
 			db.insertStudentUser(student)
 			
 		elif (type == "Instructor"):
-			pass
-	else:
+			name = input("Enter name: ")
+			ID = input("Enter ID: ")
+			username = input("Enter username: ")
+			password = input("Enter password: ")
+			instructor = Instructor(name, ID, username, password)
+
+			db.insertInstructorUser(instructor)
+	
+
+	if (authenticated == True):
 		pass
 
-
-	auth = db.authenticate(username, password)
-
-	if (auth == True):
-		pass
-	else:
-		pass
 
 
