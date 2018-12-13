@@ -24,9 +24,11 @@ class Student():
 		self.stuID = stuID;
 		self.username = username
 		self.password = password
+		self.marksList = {}
 
 	def viewMarks(self):
-		pass
+		for name, mark in self.marksList.items():
+			print (name, "->", mark)
 
 
 
