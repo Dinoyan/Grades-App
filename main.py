@@ -1,6 +1,6 @@
 import base64
 import pymongo
-from db import *
+import db
 from bson.binary import Binary
 import pickle
 
@@ -9,7 +9,7 @@ class Instructor:
 		self.name = name
 		self.ID = ID
 		sefl.username = username
-		self.password = base64.b64encoder(password)
+		self.password = base64.b64encode(password.encode("utf-8"))
 
 	def __str__():
 		return "Welcome " + self.name 
@@ -29,7 +29,7 @@ class Student():
 		self.name = name;
 		self.stuID = stuID;
 		self.username = username
-		self.password = base64.b64encoder(password)
+		self.password = base64.b64encode(password.encode("utf-8"))
 		self.marksList = {}
 
 	def __str__(self):
@@ -42,23 +42,25 @@ class Student():
 
 if __name__ =="__main__":
 	print("Course Marks\n")
-	username = raw_input("Enter username ")
-	password = raw_input("Enter password ")
+	username = input("Enter username ")
+	password = input("Enter password ")
 
 
 	# Creating new accounts
 	if(username == "admin"):
-	print("Create New Account\n")
-	type = raw_input("Student or Instructor")
-	if (type == "Student"):
-		name = raw_input("Enter name: ")
-		ID = raw_input("Enter ID: ")
-		username = raw_input("Enter username: ")
-		password = raw_input("Enter password: ")
-		Student = Student(name, ID, username, password)
+		print("Create New Account\n")
+		type = input("Student or Instructor ")
+		if (type == "Student"):
+			name = input("Enter name: ")
+			ID = input("Enter ID: ")
+			username = input("Enter username: ")
+			password = input("Enter password: ")
+			student = Student(name, ID, username, password)
 
-		studentSerialize = pickle.dumps(Student)
-		db.ininsertStudentUser(studentSerialize)
+			db.ininsertStudentUser(student)
+			
+		elif (type == "Instructor"):
+			pass
 	else:
 		pass
 
