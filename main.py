@@ -36,35 +36,34 @@ if __name__ =="__main__":
 
 	authenticated = False
 	while (!authenticated):
-		ID = input("Enter ID: ")
-		password = input("Enter password: ")
+		ID = input("ID: ")
+		password = input("Password: ")
 		# Check the type of user based on the ID
 		authenticated = db.authenticate(ID, password, "blah")
 
-
 	# Creating new accounts
 	if(ID == "admin"):
-		print("Create New Account\n")
+		print("Create a New Account\n")
 		type = input("Student or Instructor: ")
 		if (type == "Student"):
-			name = input("Enter name: ")
-			ID = input("Enter ID: ")
-			username = input("Enter username: ")
-			password = input("Enter password: ")
+			name = input("Name: ")
+			ID = input("ID: ")
+			username = input("Username: ")
+			password = input("Password: ")
 			student = Student(name, ID, username, password)
 
 			db.insertStudentUser(student)
 			
 		elif (type == "Instructor"):
-			name = input("Enter name: ")
-			ID = input("Enter ID: ")
-			username = input("Enter username: ")
-			password = input("Enter password: ")
+			name = input("Name: ")
+			ID = input("ID: ")
+			username = input("Username: ")
+			password = input("Password: ")
 			instructor = Instructor(name, ID, username, password)
 
 			db.insertInstructorUser(instructor)
 	
-
+	# Display the menu for the user
 	if (authenticated == True):
 		pass
 
