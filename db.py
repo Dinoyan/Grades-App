@@ -14,26 +14,35 @@ instructors = mydb["instructors"]
 
 def insertStudentUser(user):
 	ID = user.stuID
-	studentSerialize = pickle.dumps(user)
+	studentSerialized = pickle.dumps(user)
 	identifer = {}
-	identifer[ID] = studentSerialize
+	identifer[ID] = studentSerialized
 
 	students.insert_one(identifer)
 
-	
 
-def usertInstructorUser(user):
-	pass
+def insertInstructorUser(user):
+	ID = user.stuID
+	InstructorSerialized = pickle.dumps(user)
+	identifer = {}
+	identifer[ID] = InstructorSerialized
+
+	instructors.insert_one(identifer)
 
 def updateMarks(ID, name, mark):
 	work = {}
 	work[name] = mark
 
 
-def authenticate(ID, password):
+def authenticate(ID, password, type):
 	authenticated = False
 
-	return True
+	# Query the col based on type
+
+	if (ID == "admin"):
+		authenticated = True
+
+	return authenticated
 
 
 
