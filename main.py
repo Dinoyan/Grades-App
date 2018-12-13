@@ -57,7 +57,7 @@ if __name__ =="__main__":
 			password = input("Enter password: ")
 			student = Student(name, ID, username, password)
 
-			db.ininsertStudentUser(student)
+			db.insertStudentUser(student)
 			
 		elif (type == "Instructor"):
 			pass
