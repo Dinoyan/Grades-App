@@ -5,7 +5,6 @@ import pickle
 import db_client_info
 
 myclient = db_client_info.myclient
-
 mydb = myclient["grades"]
 
 students = mydb["students"]
@@ -28,6 +27,7 @@ def insertInstructorUser(user):
 	identifer[ID] = InstructorSerialized
 
 	instructors.insert_one(identifer)
+
 
 def updateMarks(ID, name, mark):
 	work = {}
