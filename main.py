@@ -3,22 +3,23 @@ import pymongo
 import db
 from bson.binary import Binary
 import pickle
+import getpass
 
-class Instructor:
+class Instructor():
 	def __init__(self, name, ID, username, password):
 		self.name = name
 		self.ID = ID
 		self.username = username
 		self.password = base64.b64encode(password.encode("utf-8"))
 
-	def __str__():
+	def __str__(self):
 		return "Welcome " + self.name 
 
 
 class Student():
 	def __init__(self, name, stuID, username, password):
 		self.name = name;
-		self.stuID = stuID;
+		self.ID = stuID;
 		self.username = username
 		self.password = base64.b64encode(password.encode("utf-8"))
 		self.marksList = {}
@@ -38,7 +39,7 @@ if __name__ =="__main__":
 	authenticated = False
 	while (not authenticated):
 		ID = input("ID: ")
-		password = input("Password: ")
+		password = getpass.getpass('Password: ')
 		# Check the type of user based on the ID
 		if (len(str(ID)) >= 6):
 			authenticated = db.authenticate(ID, password, "instructor")
@@ -74,6 +75,8 @@ if __name__ =="__main__":
 		
 			db.insertUser(student, type)
 		else:
-			pass
+			
+			print("Student menu\n")
+			decision = input("view Marks (1) ")
 
 
