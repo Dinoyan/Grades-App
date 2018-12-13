@@ -21,11 +21,10 @@ def insertStudentUser(user):
 
 
 def insertInstructorUser(user):
-	ID = user.stuID
+	ID = user.ID
 	InstructorSerialized = pickle.dumps(user)
-	identifer = {}
-	identifer[ID] = InstructorSerialized
-
+	identifer = {"_id" : ID, "user" : InstructorSerialized}
+	
 	instructors.insert_one(identifer)
 
 
@@ -39,8 +38,16 @@ def authenticate(ID, password, type):
 
 	# Query the col based on type
 
-	if (ID == "admin"):
+	if (ID == "admind"):
 		authenticated = True
+	else:
+		myquery = {"_id" : ID}
+
+		myuser = instructors.find(myquery)
+
+		for x in myuser:
+			print(x.get("user"))
+
 
 	return authenticated
 
