@@ -69,6 +69,7 @@ def authenticate(ID, password, type):
 	accPass = base64.b64decode(userObj.password)
 
 	if((accPass.decode("utf-8")) == password):
+		print(userObj)
 		authenticated = True
 
 		
