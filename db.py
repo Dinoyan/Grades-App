@@ -1,4 +1,7 @@
 from pymongo import MongoClient
+import pymongo
+from bson.binary import Binary
+import pickle
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 
@@ -8,7 +11,11 @@ students = mydb["students"]
 instructors = mydb["instructors"]
 
 def insertStudentUser(user):
-	pass
+	ID = user.stuID
+	studentSerialize = pickle.dumps(user)
+	identifer = {}
+	identifer[ID] = studentSerialize
+	
 
 def usertInstructorUser(user):
 	pass
