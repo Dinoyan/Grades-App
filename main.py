@@ -41,35 +41,39 @@ if __name__ =="__main__":
 		password = input("Password: ")
 		# Check the type of user based on the ID
 		if (len(str(ID)) >= 6):
-			authenticated = db.authenticate(ID, password, "admin")
-			userType = "admin"
+			authenticated = db.authenticate(ID, password, "instructor")
+			userType = "instructor"
 		else:
 			authenticated = db.authenticate(ID, password, "student")
 			userType = "student"
 
-	# Creating new accounts
-	if(ID == "admin"):
-		print("Create a New Account\n")
-		type = input("Student or Instructor: ")
-		if (type == "Student"):
+
+	if(userType == "instructor"):
+
+		print("Instructor menu\n")
+		decision = input("Create User (1) | Update Mark (2) ")
+
+		# Creating new accounts
+		if (decision == "1"):
+
+			print("Create a New Account\n")
+			type = input("student or instructor: ")
+
 			name = input("Name: ")
 			ID = input("ID: ")
 			username = input("Username: ")
 			password = input("Password: ")
-			student = Student(name, ID, username, password)
 
-			db.insertStudentUser(student)
+			if (type == "student"):
 			
-		elif (type == "Instructor"):
-			name = input("Name: ")
-			ID = input("ID: ")
-			username = input("Username: ")
-			password = input("Password: ")
-			instructor = Instructor(name, ID, username, password)
-
-			db.insertInstructorUser(instructor)
-	
-	
-
+				student = Student(name, ID, username, password)
+				
+			elif (type == "instructor"):
+			
+				instructor = Instructor(name, ID, username, password)
+		
+			db.insertUser(student, type)
+		else:
+			pass
 
 
