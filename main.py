@@ -8,7 +8,7 @@ class Instructor:
 	def __init__(self, name, ID, username, password):
 		self.name = name
 		self.ID = ID
-		sefl.username = username
+		self.username = username
 		self.password = base64.b64encode(password.encode("utf-8"))
 
 	def __str__():
@@ -32,14 +32,20 @@ class Student():
 
 
 if __name__ =="__main__":
+	userType = ""
 	print("Course Marks\n")
 
 	authenticated = False
-	while (!authenticated):
+	while (not authenticated):
 		ID = input("ID: ")
 		password = input("Password: ")
 		# Check the type of user based on the ID
-		authenticated = db.authenticate(ID, password, "blah")
+		if (len(str(ID)) >= 6):
+			authenticated = db.authenticate(ID, password, "admin")
+			userType = "admin"
+		else:
+			authenticated = db.authenticate(ID, password, "student")
+			userType = "student"
 
 	# Creating new accounts
 	if(ID == "admin"):
@@ -63,9 +69,7 @@ if __name__ =="__main__":
 
 			db.insertInstructorUser(instructor)
 	
-	# Display the menu for the user
-	if (authenticated == True):
-		pass
+	
 
 
 
