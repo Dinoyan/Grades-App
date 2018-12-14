@@ -11,23 +11,6 @@ mydb = myclient["grades"]
 students = mydb["students"]
 instructors = mydb["instructors"]
 
-'''
-def insertStudentUser(user):
-	ID = user.stuID
-	studentSerialized = pickle.dumps(user)
-	identifer = {}
-	identifer[ID] = studentSerialized
-
-	students.insert_one(identifer)
-
-
-def insertInstructorUser(user):
-	ID = user.ID
-	InstructorSerialized = pickle.dumps(user)
-	identifer = {"_id" : ID, "user" : InstructorSerialized}
-	
-	instructors.insert_one(identifer)
-'''
 
 def insertUser(user, type):
 	ID = user.ID
@@ -42,8 +25,42 @@ def insertUser(user, type):
 
 
 def updateMarks(ID, name, mark):
-	work = {}
-	work[name] = mark
+	ret = 0;
+
+	myquery = {"_id" : ID}
+
+	myuser = students.find(myquery)
+
+	for x in myuser:
+		userObjSerialized = x.get("user")
+
+	stuObj = pickle.loads(userObjSerialized)
+
+	stuObj.marksList[name] = mark
+
+	stuObjSerialized = pickle.dumps(stuObj)
+
+	updated = {"$set" : {"user" : stuObjSerialized}}
+
+	students.update_one(myquery, updated)
+
+	return ret
+
+
+def viewMarks(ID):
+	myquery = {"_id" : ID}
+
+	myuser = students.find(myquery)
+
+	for x in myuser:
+		userObjSerialized = x.get("user")
+
+	stuObj = pickle.loads(userObjSerialized)
+
+	marks = stuObj.marksList
+
+	for name, mark in marks.items():
+		print (name, "->", mark)
 
 
 def authenticate(ID, password, type):
@@ -72,8 +89,4 @@ def authenticate(ID, password, type):
 		print(userObj)
 		authenticated = True
 
-		
 	return authenticated
-
-
-
