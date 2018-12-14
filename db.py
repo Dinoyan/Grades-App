@@ -14,7 +14,6 @@ instructors = mydb["instructors"]
 
 def insertUser(user, type):
 	ID = user.ID
-
 	userSerialized = pickle.dumps(user)
 	identifer = {"_id" : ID, "user" : userSerialized}
 
@@ -26,22 +25,16 @@ def insertUser(user, type):
 
 def updateMarks(ID, name, mark):
 	ret = 0;
-
 	myquery = {"_id" : ID}
-
 	myuser = students.find(myquery)
 
 	for x in myuser:
 		userObjSerialized = x.get("user")
 
 	stuObj = pickle.loads(userObjSerialized)
-
 	stuObj.marksList[name] = mark
-
 	stuObjSerialized = pickle.dumps(stuObj)
-
 	updated = {"$set" : {"user" : stuObjSerialized}}
-
 	students.update_one(myquery, updated)
 
 	return ret
@@ -49,42 +42,32 @@ def updateMarks(ID, name, mark):
 
 def viewMarks(ID):
 	myquery = {"_id" : ID}
-
 	myuser = students.find(myquery)
 
 	for x in myuser:
 		userObjSerialized = x.get("user")
 
 	stuObj = pickle.loads(userObjSerialized)
-
 	marks = stuObj.marksList
-
 	for name, mark in marks.items():
 		print (name, "->", mark)
 
 
 def authenticate(ID, password, type):
 	authenticated = False
-
 	myquery = {"_id" : ID}
 
 	# Query the col based on type
-
 	if (type == "instructor"):
-		
 		myuser = instructors.find(myquery)
-
 	else:
-		
 		myuser = students.find(myquery)
 
 	for x in myuser:
 			userObjSerialized = x.get("user")
 
 	userObj = pickle.loads(userObjSerialized)
-
 	accPass = base64.b64decode(userObj.password)
-
 	if((accPass.decode("utf-8")) == password):
 		print(userObj)
 		authenticated = True
