@@ -7,26 +7,26 @@ import getpass
 
 
 class Instructor():
-  def __init__(self, name, ID, username, password):
-    self.name = name
-    self.ID = ID
-    self.username = username
-    self.password = base64.b64encode(password.encode("utf-8"))
+    def __init__(self, name, ID, username, password):
+        self.name = name
+        self.ID = ID
+        self.username = username
+        self.password = base64.b64encode(password.encode("utf-8"))
 
-  def __str__(self):
-    return "Welcome " + self.name 
+    def __str__(self):
+        return "Welcome " + self.name 
 
 
 class Student():
-  def __init__(self, name, stuID, username, password):
-    self.name = name;
-    self.ID = stuID;
-    self.username = username
-    self.password = base64.b64encode(password.encode("utf-8"))
-    self.marksList = {}
+    def __init__(self, name, stuID, username, password):
+        self.name = name;
+        self.ID = stuID;
+        self.username = username
+        self.password = base64.b64encode(password.encode("utf-8"))
+        self.marksList = {}
 
-  def __str__(self):
-    return "Welcome " + self.name
+    def __str__(self):
+      return "Welcome " + self.name
 
 
 if __name__ =="__main__":
