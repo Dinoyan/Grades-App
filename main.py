@@ -7,11 +7,11 @@ import getpass
 
 
 class Instructor():
-    def __init__(self, name, ID, username, password):
-        self.name = name
-		self.ID = ID
-		self.username = username
-		self.password = base64.b64encode(password.encode("utf-8"))
+   def __init__(self, name, ID, username, password):
+      self.name = name
+      self.ID = ID
+			self.username = username
+			self.password = base64.b64encode(password.encode("utf-8"))
 
 	def __str__(self):
 		return "Welcome " + self.name 
