@@ -5,6 +5,7 @@ from bson.binary import Binary
 import pickle
 import getpass
 
+
 class Instructor():
 	def __init__(self, name, ID, username, password):
 		self.name = name
@@ -27,16 +28,14 @@ class Student():
 	def __str__(self):
 		return "Welcome " + self.name
 
-	def viewMarks(self):
-		for name, mark in self.marksList.items():
-			print (name, "->", mark)
-
 
 if __name__ =="__main__":
 	userType = ""
-	print("Course Marks\n")
-
+	quit = False
 	authenticated = False
+
+	print("Course Marks Interface\n")
+
 	while (not authenticated):
 		ID = input("ID: ")
 		password = getpass.getpass('Password: ')
@@ -51,32 +50,63 @@ if __name__ =="__main__":
 
 	if(userType == "instructor"):
 
-		print("Instructor menu\n")
-		decision = input("Create User (1) | Update Mark (2) ")
+		while (not quit):
 
-		# Creating new accounts
-		if (decision == "1"):
+			print("Instructor menu\n")
+			decision = input("Create User (1) | Update Mark (2) | Exit (3) ")
 
-			print("Create a New Account\n")
-			type = input("student or instructor: ")
+			# Creating new accounts
+			if (decision == "1"):
 
-			name = input("Name: ")
-			ID = input("ID: ")
-			username = input("Username: ")
-			password = input("Password: ")
+				print("Create a New Account\n")
+				type = input("student or instructor: ")
 
-			if (type == "student"):
-			
-				student = Student(name, ID, username, password)
+				name = input("Name: ")
+				ID = input("ID: ")
+				username = input("Username: ")
+				password = input("Password: ")
+
+				if (type == "student"):
 				
-			elif (type == "instructor"):
+					student = Student(name, ID, username, password)
+					
+				elif (type == "instructor"):
+				
+					instructor = Instructor(name, ID, username, password)
 			
-				instructor = Instructor(name, ID, username, password)
+				db.insertUser(student, type)
+
+			elif (decision == "2"):
+				multipleStu = False
+				
+				while (not multipleStu):
+					stuID = input("ID: ")
+					aName = input("Assignment Name: ")
+					mark = input("Mark: ")
+
+					db.updateMarks(stuID, aName, mark)
+					
+					moreInput = input("Input another (y/n): ")
+					
+					if (moreInput == "n"):
+						multipleStu = True
+
+			else:
+				quit = True
+
+	else:
+
+		while (not quit):
 		
-			db.insertUser(student, type)
-		else:
-			
 			print("Student menu\n")
-			decision = input("view Marks (1) ")
+			decision = input("view Marks (1) | Exit (2) ")
+
+			if (decision == "1"):
+				db.viewMarks(ID)
+
+			else:
+				quit = True
+
+	print("**********************")
 
 
