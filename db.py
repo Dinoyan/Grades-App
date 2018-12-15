@@ -45,6 +45,10 @@ def insertUser(user, type):
 		students.insert_one(identifer)
 
 
+def removeStudent(ID):
+	pass
+
+
 def updateMarks(ID, name, mark):
 	ret = 0;
 	myquery = {"_id" : ID}
@@ -78,5 +82,10 @@ def viewMarks(ID):
 def getStudentInfo(ID):
 	pass
 
+
 def getAllMarks():
+	pass
+
+
+def getWorkAvg(workName):
 	pass
