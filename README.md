@@ -12,8 +12,14 @@ These instructions will get you a copy of the project up and running on your loc
 
 - PyMongo
 ```
-pip install pymongo==3.4.0
+pip3 install pymongo==3.4.0
 ```
+
+- MongoDB
+```
+brew install mongodb
+```
+
 
 ### Installing
 
