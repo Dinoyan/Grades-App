@@ -55,7 +55,12 @@ def removeAStudent(ID):
 def clearAllStudent():
 	students.delete_many({})
 
+'''
+Function to complie and run C programs and output it 
+to a .txt file. Then compare the output txt file with the solution.
 
+Source: https://github.com/Dinoyan/Auto-Mark
+'''
 def autoMarkCAssignment(assignName):
 	for file in os.listdir():
     if file.endswith(".c"):
@@ -70,7 +75,6 @@ def autoMarkCAssignment(assignName):
         	updateMarks(cmd[:-2], assignName, 100):
         else:
         	updateMarks(cmd[:-2], assignName, 0):
-
 
 
 def updateMarks(ID, name, mark):
