@@ -53,6 +53,10 @@ def removeAStudent(ID):
 def clearAllStudent():
 	students.delete_many({})
 
+
+def autoMarkCAssignment(fileName):
+	pass
+
 def updateMarks(ID, name, mark):
 	myquery = {"_id" : ID}
 	myuser = students.find(myquery)
