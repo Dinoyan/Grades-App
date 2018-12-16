@@ -4,6 +4,8 @@ from bson.binary import Binary
 import pickle
 import db_client_info
 import base64
+import subprocess
+import os
 
 myclient = db_client_info.myclient
 mydb = myclient["grades"]
@@ -54,8 +56,22 @@ def clearAllStudent():
 	students.delete_many({})
 
 
-def autoMarkCAssignment(fileName):
-	pass
+def autoMarkCAssignment(assignName):
+	for file in os.listdir():
+    if file.endswith(".c"):
+        cmd = os.path.join(file)
+        resultFile = cmd[:-2] + ".txt"
+        subprocess.run(["gcc",cmd]) #For Compiling
+        os.system("./a.out > " + resultFile)
+        mark = subprocess.run(["cmp", resultFile, "solution.txt"])
+        os.remove(resultFile)
+        mark = mark.returncode
+        if (mark == 0):
+        	updateMarks(cmd[:-2], assignName, 100):
+        else:
+        	updateMarks(cmd[:-2], assignName, 0):
+
+
 
 def updateMarks(ID, name, mark):
 	myquery = {"_id" : ID}
