@@ -54,7 +54,6 @@ def clearAllStudent():
 	students.delete_many({})
 
 def updateMarks(ID, name, mark):
-	ret = 0;
 	myquery = {"_id" : ID}
 	myuser = students.find(myquery)
 
@@ -69,8 +68,8 @@ def updateMarks(ID, name, mark):
 		students.update_one(myquery, updated)
 	except UnboundLocalError:
 		print("Invalid ID")
-
-	return ret
+	else:
+		print("updated Successfully\n")
 
 
 def viewMarks(ID):
