@@ -20,7 +20,6 @@ pip3 install pymongo==3.4.0
 brew install mongodb
 ```
 
-
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
