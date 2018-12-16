@@ -45,9 +45,13 @@ def insertUser(user, type):
 		students.insert_one(identifer)
 
 
-def removeStudent(ID):
-	pass
+def removeAStudent(ID):
+	myquery = {"_id" : ID}
+	students.delete_one(myquery)
 
+
+def clearAllStudent():
+	students.delete_many({})
 
 def updateMarks(ID, name, mark):
 	ret = 0;
@@ -80,7 +84,9 @@ def viewMarks(ID):
 
 
 def getStudentInfo(ID):
-	pass
+	
+	for student in students.find({"_id" : ID}):
+		pass
 
 
 def getAllMarks():
