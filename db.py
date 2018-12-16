@@ -63,18 +63,18 @@ Source: https://github.com/Dinoyan/Auto-Mark
 '''
 def autoMarkCAssignment(assignName):
 	for file in os.listdir():
-    if file.endswith(".c"):
-        cmd = os.path.join(file)
-        resultFile = cmd[:-2] + ".txt"
-        subprocess.run(["gcc",cmd]) #For Compiling
-        os.system("./a.out > " + resultFile)
-        mark = subprocess.run(["cmp", resultFile, "solution.txt"])
-        os.remove(resultFile)
-        mark = mark.returncode
-        if (mark == 0):
-        	updateMarks(cmd[:-2], assignName, 100):
-        else:
-        	updateMarks(cmd[:-2], assignName, 0):
+	    if file.endswith(".c"):
+	        cmd = os.path.join(file)
+	        resultFile = cmd[:-2] + ".txt"
+	        subprocess.run(["gcc",cmd]) #For Compiling
+	        os.system("./a.out > " + resultFile)
+	        mark = subprocess.run(["cmp", resultFile, "solution.txt"])
+	        os.remove(resultFile)
+	        mark = mark.returncode
+	        if (mark == 0):
+	            updateMarks(cmd[:-2], assignName, 100)
+	        else:
+	            updateMarks(cmd[:-2], assignName, 0)
 
 
 def updateMarks(ID, name, mark):
@@ -93,7 +93,7 @@ def updateMarks(ID, name, mark):
 	except UnboundLocalError:
 		print("Invalid ID")
 	else:
-		print("updated Successfully\n")
+		print("Updated Successfully\n")
 
 
 def viewMarks(ID):
