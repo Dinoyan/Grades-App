@@ -49,7 +49,9 @@ if __name__ =="__main__":
     if(userType == "instructor"):
         while (not quit):
             print("Instructor menu\n")
-            decision = input("Create User (1) | Update Mark (2) | Exit (3) ")
+            print("Create User (1) | Update Mark (2) | Auto Mark (3) ")
+            print("Exit (4)")
+            decision = input()
             # Creating new accounts
             if (decision == "1"):
                 print("Create a New Account\n")
@@ -78,12 +80,17 @@ if __name__ =="__main__":
 
                     if (moreInput == "n"):
                             multipleStu = True
-            else:
+            elif (decision == "3"):
+                assignName = input("Assignment name: ")
+                db.autoMarkCAssignment(assignName)
+            elif (decision == "4"):
                 quit = True
+            else:
+                print("Not valid")
     else:
         while (not quit):
             print("Student menu\n")
-            decision = input("view Marks (1) | Exit (2) ")
+            decision = input("View Marks (1) | Exit (2) ")
             if (decision == "1"):
                 db.viewMarks(ID)
             else:
