@@ -61,11 +61,14 @@ def updateMarks(ID, name, mark):
 	for x in myuser:
 		userObjSerialized = x.get("user")
 
-	stuObj = pickle.loads(userObjSerialized)
-	stuObj.marksList[name] = mark
-	stuObjSerialized = pickle.dumps(stuObj)
-	updated = {"$set" : {"user" : stuObjSerialized}}
-	students.update_one(myquery, updated)
+	try:
+		stuObj = pickle.loads(userObjSerialized)
+		stuObj.marksList[name] = mark
+		stuObjSerialized = pickle.dumps(stuObj)
+		updated = {"$set" : {"user" : stuObjSerialized}}
+		students.update_one(myquery, updated)
+	except UnboundLocalError:
+		print("Invalid ID")
 
 	return ret
 
