@@ -59,7 +59,7 @@ def clearAllStudent():
 Function to complie and run C programs and output it 
 to a .txt file. Then compare the output txt file with the solution.
 
-Source: https://github.com/Dinoyan/Auto-Mark
+https://github.com/Dinoyan/Auto-Mark
 '''
 def autoMarkCAssignment(assignName):
 	for file in os.listdir():
