@@ -40,8 +40,15 @@ $ python3 main.py
 
 ### Demo
 
-
+### Features
+- db.py: autoMarkCAssignment()
+  https://github.com/Dinoyan/Auto-Mark
+  
+  
 ## Built With
 
 * [PyMongo](https://api.mongodb.com/python/current/) - PyMongo DB
 * Python
+
+
+
