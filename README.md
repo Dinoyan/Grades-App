@@ -12,28 +12,27 @@ These instructions will get you a copy of the project up and running on your loc
 
 - PyMongo
 ```
-$pip3 install pymongo==3.4.0
+$ pip3 install pymongo==3.4.0
 ```
 
 - MongoDB
 ```
-$brew install mongodb
+$ brew install mongodb
 ```
 
-### Installing
+### Deployment
 
-A step by step series of examples that tell you how to get a development env running
+- Clone this repo.
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+- Start the Mongo daemon:
 
 ```
-until finished
+$ mongod
+```
+
+- Run the python main program.
+```
+$ python3 main.py
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
@@ -58,7 +57,7 @@ Explain what these tests test and why
 Give an example
 ```
 
-## Deployment
+
 
 Add additional notes about how to deploy this on a live system
 
