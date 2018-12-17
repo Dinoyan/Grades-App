@@ -42,6 +42,12 @@ $ python3 main.py
 
 User login interface: <br/>
 ![login](https://i.imgur.com/slhDYLH.png)
+<br/>
+Student menu:
+[stu](https://i.imgur.com/3c22J3I.png)
+<br/>
+Instructor menu
+[ins](https://i.imgur.com/j3qgRVf.png)
 
 ### Features
 - db.py: autoMarkCAssignment()
