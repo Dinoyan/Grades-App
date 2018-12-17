@@ -41,7 +41,7 @@ $ python3 main.py
 ### Demo
 
 User login interface:
-![Login](https://imgur.com/slhDYLH)
+![login](https://i.imgur.com/slhDYLH.png)
 
 ### Features
 - db.py: autoMarkCAssignment()
