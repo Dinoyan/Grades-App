@@ -44,9 +44,11 @@ User login interface: <br/>
 ![login](https://i.imgur.com/slhDYLH.png)
 <br/>
 Student menu:
+<br/>
 ![stu](https://i.imgur.com/3c22J3I.png)
 <br/>
 Instructor menu
+<br/>
 ![ins](https://i.imgur.com/j3qgRVf.png)
 
 ### Features
