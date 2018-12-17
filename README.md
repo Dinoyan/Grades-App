@@ -40,6 +40,9 @@ $ python3 main.py
 
 ### Demo
 
+User login interface:
+![Login](https://imgur.com/slhDYLH)
+
 ### Features
 - db.py: autoMarkCAssignment()
   https://github.com/Dinoyan/Auto-Mark
