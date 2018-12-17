@@ -40,7 +40,7 @@ $ python3 main.py
 
 ### Demo
 
-User login interface:
+User login interface: <br/>
 ![login](https://i.imgur.com/slhDYLH.png)
 
 ### Features
