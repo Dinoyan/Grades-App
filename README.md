@@ -38,7 +38,7 @@ myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 $ python3 main.py
 ```
 
-### Demo
+### Demo (through command line)
 
 User login interface: <br/>
 ![login](https://i.imgur.com/slhDYLH.png)
