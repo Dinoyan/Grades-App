@@ -26,12 +26,14 @@ def authenticate(ID, password, type):
 
 	for x in myuser:
 			userObjSerialized = x.get("user")
-
-	userObj = pickle.loads(userObjSerialized)
-	accPass = base64.b64decode(userObj.password)
-	if((accPass.decode("utf-8")) == password):
-		print(userObj)
-		authenticated = True
+	try:
+		userObj = pickle.loads(userObjSerialized)
+		accPass = base64.b64decode(userObj.password)
+		if((accPass.decode("utf-8")) == password):
+			print(userObj)
+			authenticated = True
+	except UnboundLocalError:
+		print("Invalid ID")
 
 	return authenticated
 
