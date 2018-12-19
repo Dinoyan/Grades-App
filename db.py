@@ -33,7 +33,7 @@ def authenticate(ID, password, type):
 			print(userObj)
 			authenticated = True
 	except UnboundLocalError:
-		print("Invalid ID")
+		print("Invalid ID or password")
 
 	return authenticated
 
