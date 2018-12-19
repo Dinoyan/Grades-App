@@ -33,6 +33,7 @@ if __name__ =="__main__":
     userType = ""
     quit = False
     authenticated = False
+    inputValid = False
 
     print("Course Marks Interface\n")
     while (not authenticated):
@@ -58,7 +59,21 @@ if __name__ =="__main__":
                 type = input("student or instructor: ")
 
                 name = input("Name: ")
-                ID = input("ID: ")
+                while (inputValid == False):
+                    ID = input("ID: ")
+
+                    if (type == "student"):
+                        if ( not (len(str(ID)) == 4)):
+                            print("ID must be 4 digits")
+                        else:
+                            inputValid = True
+
+                    if (type == "instructor"):
+                        if (not (len(str(ID)) == 6)):
+                            print("ID must be 6 digits")
+                        else:
+                            inputValid = True
+
                 username = input("Username: ")
                 password = input("Password: ")
 
