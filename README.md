@@ -1,6 +1,6 @@
 # Grades-App
 
-A program where instructors can update students assignment marks and students can see it as soon as the innstructor updates them. 
+A program where instructors can update students assignment marks and students can see it as soon as the instructor updates them. 
 
 ## Getting Started
 
